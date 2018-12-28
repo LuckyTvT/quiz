@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.92.132.41:3306/quizData?useUnicode=true&characterEncoding=utf8
+    username: guest
+    password: guest
+    driver-class-name: com.mysql.cj.jdbc.Driver

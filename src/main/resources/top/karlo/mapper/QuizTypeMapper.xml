@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.karlo.mapper.QuizTypeMapper" >
+  <resultMap id="BaseResultMap" type="top.karlo.quiz.pojo.QuizType" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="EXTRA1" property="extra1" jdbcType="VARCHAR" />
+    <result column="EXTRA2" property="extra2" jdbcType="VARCHAR" />
+    <result column="EXTRA3" property="extra3" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from QUIZ_TYPE
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.karlo.quiz.pojo.QuizType" >
+    insert into QUIZ_TYPE (ID, NAME, EXTRA1, 
+      EXTRA2, EXTRA3)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{extra1,jdbcType=VARCHAR}, 
+      #{extra2,jdbcType=VARCHAR}, #{extra3,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.QuizType" >
+    update QUIZ_TYPE
+    set NAME = #{name,jdbcType=VARCHAR},
+      EXTRA1 = #{extra1,jdbcType=VARCHAR},
+      EXTRA2 = #{extra2,jdbcType=VARCHAR},
+      EXTRA3 = #{extra3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select ID, NAME, EXTRA1, EXTRA2, EXTRA3
+    from QUIZ_TYPE
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ID, NAME, EXTRA1, EXTRA2, EXTRA3
+    from QUIZ_TYPE
+  </select>
+</mapper>
