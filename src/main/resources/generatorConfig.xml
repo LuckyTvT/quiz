@@ -45,7 +45,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="QUIZ_TYPE"></table>
+        <table tableName="QUIZ_TYPE" domainObjectName="QuizType"></table>
         <table tableName="QUIZBANK_BLANK" domainObjectName="QuizbankBlank">
             <columnOverride column="QUESTION" jdbcType="VARCHAR" />
             <columnOverride column="ANSWER" jdbcType="VARCHAR" />

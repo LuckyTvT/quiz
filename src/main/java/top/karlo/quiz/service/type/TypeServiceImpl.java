@@ -22,6 +22,6 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public List<QuizType> getAllType() {
-        return quizTypeMapper.selectAllType();
+        return quizTypeMapper.selectAll();
     }
 }
