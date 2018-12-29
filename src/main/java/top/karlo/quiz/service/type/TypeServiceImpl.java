@@ -18,7 +18,7 @@ import java.util.List;
 public class TypeServiceImpl implements TypeService {
 
     @Autowired
-    QuizTypeMapper quizTypeMapper;
+    private QuizTypeMapper quizTypeMapper;
 
     @Override
     public List<QuizType> getAllType() {

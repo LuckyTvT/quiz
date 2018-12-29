@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="top.karlo.mapper.QuizbankChoiceMapper" >
-  <resultMap id="BaseResultMap" type="top.karlo.quiz.pojo.QuizbankChoice" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="TYPE" property="type" jdbcType="INTEGER" />
-    <result column="QUESTION" property="question" jdbcType="VARCHAR" />
-    <result column="A" property="a" jdbcType="VARCHAR" />
-    <result column="B" property="b" jdbcType="VARCHAR" />
-    <result column="C" property="c" jdbcType="VARCHAR" />
-    <result column="D" property="d" jdbcType="VARCHAR" />
-    <result column="ANSWER" property="answer" jdbcType="CHAR" />
-    <result column="EXTRA1" property="extra1" jdbcType="VARCHAR" />
-    <result column="EXTRA2" property="extra2" jdbcType="VARCHAR" />
-    <result column="EXTRA3" property="extra3" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.karlo.mapper.QuizbankChoiceMapper">
+  <resultMap id="BaseResultMap" type="top.karlo.quiz.pojo.QuizbankChoice">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TYPE" jdbcType="INTEGER" property="type" />
+    <result column="QUESTION" jdbcType="VARCHAR" property="question" />
+    <result column="A" jdbcType="VARCHAR" property="a" />
+    <result column="B" jdbcType="VARCHAR" property="b" />
+    <result column="C" jdbcType="VARCHAR" property="c" />
+    <result column="D" jdbcType="VARCHAR" property="d" />
+    <result column="ANSWER" jdbcType="CHAR" property="answer" />
+    <result column="EXTRA1" jdbcType="VARCHAR" property="extra1" />
+    <result column="EXTRA2" jdbcType="VARCHAR" property="extra2" />
+    <result column="EXTRA3" jdbcType="VARCHAR" property="extra3" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from QUIZBANK_CHOICE
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="top.karlo.quiz.pojo.QuizbankChoice" >
+  <insert id="insert" parameterType="top.karlo.quiz.pojo.QuizbankChoice">
     insert into QUIZBANK_CHOICE (ID, TYPE, QUESTION, 
       A, B, C, D, 
       ANSWER, EXTRA1, EXTRA2, 
@@ -28,7 +28,7 @@
       #{answer,jdbcType=CHAR}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}, 
       #{extra3,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.QuizbankChoice" >
+  <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.QuizbankChoice">
     update QUIZBANK_CHOICE
     set TYPE = #{type,jdbcType=INTEGER},
       QUESTION = #{question,jdbcType=VARCHAR},
@@ -42,12 +42,62 @@
       EXTRA3 = #{extra3,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select ID, TYPE, QUESTION, A, B, C, D, ANSWER, EXTRA1, EXTRA2, EXTRA3
     from QUIZBANK_CHOICE
     where ID = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, TYPE, QUESTION, A, B, C, D, ANSWER, EXTRA1, EXTRA2, EXTRA3
+    from QUIZBANK_CHOICE
+  </select>
+  <resultMap id="BaseResultMap" type="top.karlo.quiz.pojo.QuizbankChoice">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TYPE" jdbcType="INTEGER" property="type" />
+    <result column="QUESTION" jdbcType="VARCHAR" property="question" />
+    <result column="A" jdbcType="VARCHAR" property="a" />
+    <result column="B" jdbcType="VARCHAR" property="b" />
+    <result column="C" jdbcType="VARCHAR" property="c" />
+    <result column="D" jdbcType="VARCHAR" property="d" />
+    <result column="ANSWER" jdbcType="CHAR" property="answer" />
+    <result column="EXTRA1" jdbcType="VARCHAR" property="extra1" />
+    <result column="EXTRA2" jdbcType="VARCHAR" property="extra2" />
+    <result column="EXTRA3" jdbcType="VARCHAR" property="extra3" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from QUIZBANK_CHOICE
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.karlo.quiz.pojo.QuizbankChoice">
+    insert into QUIZBANK_CHOICE (ID, TYPE, QUESTION, 
+      A, B, C, D, 
+      ANSWER, EXTRA1, EXTRA2, 
+      EXTRA3)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, 
+      #{a,jdbcType=VARCHAR}, #{b,jdbcType=VARCHAR}, #{c,jdbcType=VARCHAR}, #{d,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=CHAR}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}, 
+      #{extra3,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.QuizbankChoice">
+    update QUIZBANK_CHOICE
+    set TYPE = #{type,jdbcType=INTEGER},
+      QUESTION = #{question,jdbcType=VARCHAR},
+      A = #{a,jdbcType=VARCHAR},
+      B = #{b,jdbcType=VARCHAR},
+      C = #{c,jdbcType=VARCHAR},
+      D = #{d,jdbcType=VARCHAR},
+      ANSWER = #{answer,jdbcType=CHAR},
+      EXTRA1 = #{extra1,jdbcType=VARCHAR},
+      EXTRA2 = #{extra2,jdbcType=VARCHAR},
+      EXTRA3 = #{extra3,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select ID, TYPE, QUESTION, A, B, C, D, ANSWER, EXTRA1, EXTRA2, EXTRA3
+    from QUIZBANK_CHOICE
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select ID, TYPE, QUESTION, A, B, C, D, ANSWER, EXTRA1, EXTRA2, EXTRA3
     from QUIZBANK_CHOICE
   </select>

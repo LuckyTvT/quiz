@@ -34,8 +34,6 @@ public class BaseAction {
         return typeService.getAllType();
     }
 
-
-
-
+    
 
 }
