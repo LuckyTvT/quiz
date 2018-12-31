@@ -14,8 +14,16 @@ spring:
       username: guest
       password: guest
       driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
 
 
 
 server:
   port: 8010
+
+logging:
+  level:
+    top:
+      karlo:
+        quiz:
+          repository: debug

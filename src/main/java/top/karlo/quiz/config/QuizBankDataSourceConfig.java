@@ -24,7 +24,7 @@ import javax.sql.DataSource;
  * @author Karlo
  * @date 2018/12/30 13:46
  */
-@Configuration
+//@Configuration
 //@MapperScan(basePackages = {"top.karlo.mapper.bank"},sqlSessionTemplateRef = "quizBankSqlSessionTemplate")
 public class QuizBankDataSourceConfig {
 

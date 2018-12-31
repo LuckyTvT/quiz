@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  * @author Karlo
  * @date 2018/12/30 17:00
  */
-@Configuration
+//@Configuration
 //@MapperScan(basePackages = {"top.karlo.mapper.user"},sqlSessionTemplateRef = "quizUserSqlSessionTemplate")
 public class QuizUserDataSourceConfig {
 

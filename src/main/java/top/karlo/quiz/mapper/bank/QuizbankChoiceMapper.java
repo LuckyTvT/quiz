@@ -7,20 +7,16 @@ import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.pojo.QuizbankChoice;
 
 @Mapper
+@DataSource
 public interface QuizbankChoiceMapper {
 
-    @DataSource
     int deleteByPrimaryKey(Integer id);
 
-    @DataSource
     int insert(QuizbankChoice record);
 
-    @DataSource
     QuizbankChoice selectByPrimaryKey(Integer id);
 
-    @DataSource
     List<QuizbankChoice> selectAll();
 
-    @DataSource
     int updateByPrimaryKey(QuizbankChoice record);
 }
