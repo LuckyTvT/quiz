@@ -34,7 +34,7 @@ public class QuizBankDataSourceConfig {
      */
     @Bean(name="quizBankDataSource")
     // prefix值必须是application.properteis中对应属性的前缀
-    @ConfigurationProperties(prefix="quizbank.datasource")
+    @ConfigurationProperties(prefix="spring.datasource.quizbank")
     @Primary
     public DataSource quizBankDataSource(){
         return DruidDataSourceBuilder.create().build();
@@ -47,7 +47,7 @@ public class QuizBankDataSourceConfig {
         sqlSessionFactory.setDataSource(dataSource);
         //添加xml目录
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:top/karlo/mapper/bank/*.xml"));
+        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:top/karlo/quiz/mapper/bank/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
