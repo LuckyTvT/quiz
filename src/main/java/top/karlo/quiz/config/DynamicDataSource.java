@@ -119,9 +119,7 @@ public class DynamicDataSource implements ImportBeanDefinitionRegistrar, Environ
         // 将该bean注册为datasource，不使用springboot自动生成的datasource
         beanDefinitionRegistry.registerBeanDefinition("datasource", define);
         logger.info("注册数据源成功，一共注册{}个数据源", customDataSources.keySet().size() + 1);
-        for (String key : customDataSources.keySet()) {
-            logger.info("k:{},v:{}",key,customDataSources.get(key));
-        }
+
     }
 
     /**
