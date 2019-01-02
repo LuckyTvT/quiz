@@ -2,6 +2,7 @@ package top.karlo.quiz.service.type;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.karlo.quiz.mapper.bank.QuizTypeMapper;
 import top.karlo.quiz.pojo.QuizType;
 
@@ -15,6 +16,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class TypeServiceImpl implements TypeService {
 
     @Autowired
