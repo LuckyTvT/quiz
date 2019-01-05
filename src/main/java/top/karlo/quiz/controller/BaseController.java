@@ -18,7 +18,7 @@ import java.util.List;
  * @date 2018/12/28 12:35
  */
 @RestController
-public class BaseAction {
+public class BaseController {
 
     @Autowired
     TypeService typeService;

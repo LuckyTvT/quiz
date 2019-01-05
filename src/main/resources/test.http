@@ -1,0 +1,9 @@
+### get local ip
+POST http://localhost:8080/quiz
+Content-Type: application/json
+{
+"name": "sample",
+"time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
