@@ -59,4 +59,10 @@
     LAST_TIME, EXTRA1, EXTRA2, EXTRA3
     from USER
   </select>
+
+  <select id="getUserByUsername" parameterType="java.lang.String" resultMap="top.karlo.quiz.pojo.User" >
+    select ID, USER_UUID, USERNAME, PASSWORD, EMAIL, TELEPHONE, ROLE, IMAGE, LAST_IP,
+    LAST_TIME, EXTRA1, EXTRA2, EXTRA3
+    from USER where USERNAME = #{value}
+  </select>
 </mapper>

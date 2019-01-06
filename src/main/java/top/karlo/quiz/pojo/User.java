@@ -1,8 +1,19 @@
 package top.karlo.quiz.pojo;
 
-import java.util.Date;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class User {
+import java.util.Collection;
+import java.util.Date;
+import java.util.Set;
+
+/**
+ * @Data注解能给pojo类添加set get equals hashCode toString 等方法
+ */
+
+@Data
+public class User implements UserDetails {
     private Integer id;
 
     private String userUuid;
@@ -10,6 +21,8 @@ public class User {
     private String username;
 
     private String password;
+
+    private String userUniqueSalt;
 
     private String email;
 
@@ -29,107 +42,31 @@ public class User {
 
     private String extra3;
 
-    public Integer getId() {
-        return id;
+    private Set<GrantedAuthority> grantedAuthoritySet;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public String getUserUuid() {
-        return userUuid;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid == null ? null : userUuid.trim();
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return grantedAuthoritySet;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
-    }
-
-    public String getLastIp() {
-        return lastIp;
-    }
-
-    public void setLastIp(String lastIp) {
-        this.lastIp = lastIp == null ? null : lastIp.trim();
-    }
-
-    public Date getLastTime() {
-        return lastTime;
-    }
-
-    public void setLastTime(Date lastTime) {
-        this.lastTime = lastTime;
-    }
-
-    public String getExtra1() {
-        return extra1;
-    }
-
-    public void setExtra1(String extra1) {
-        this.extra1 = extra1 == null ? null : extra1.trim();
-    }
-
-    public String getExtra2() {
-        return extra2;
-    }
-
-    public void setExtra2(String extra2) {
-        this.extra2 = extra2 == null ? null : extra2.trim();
-    }
-
-    public String getExtra3() {
-        return extra3;
-    }
-
-    public void setExtra3(String extra3) {
-        this.extra3 = extra3 == null ? null : extra3.trim();
-    }
 }

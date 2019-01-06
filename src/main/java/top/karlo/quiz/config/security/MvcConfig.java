@@ -1,4 +1,4 @@
-package top.karlo.quiz.config;
+package top.karlo.quiz.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

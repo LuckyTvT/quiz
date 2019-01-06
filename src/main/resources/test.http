@@ -1,5 +1,5 @@
 ### get local ip
-POST http://localhost:8080/quiz
+POST http://localhost:8010/home
 Content-Type: application/json
 {
 "name": "sample",

@@ -1,7 +1,9 @@
 package top.karlo.quiz.service.user;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.karlo.quiz.mapper.user.UserMapper;
 import top.karlo.quiz.pojo.User;
 
@@ -16,6 +18,8 @@ import java.util.List;
  */
 
 @Service
+@Slf4j
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService {
 
     @Autowired
