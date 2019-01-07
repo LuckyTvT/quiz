@@ -12,11 +12,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * 功能描述：
  *      security参见：https://www.jianshu.com/p/76bfa6743ba9
+ *              https://blog.csdn.net/qq_35508033/article/details/79046441
  * @author Karlo
  * @date 2019/1/2 16:50
  */
@@ -26,6 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationProvider authenticationProvider;
+
+
+//    private final UserDetailsService userDetailsService;
+
 
     /**
      * 配置user-detail服务 设置内存中默认用户
@@ -52,9 +61,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
-                .withUser("admin").password("admin123").roles("ADMIN","USER")
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
+                .roles("USER")
                 .and()
-                .withUser("user").password("user").roles("USER");
+                .withUser("admin").password(new BCryptPasswordEncoder().encode("admin123"))
+                .roles("ADMIN","USER");
+
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password("admin123").roles("ADMIN","USER")
+//                .and()
+//                .withUser("user").password("user").roles("USER");
     }
 
 
@@ -66,6 +83,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        UsernamePasswordAuthenticationFilter filter = new CaptchaAuthenticator();
+        filter.setAuthenticationManager(authenticationManager());
+        filter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"));
+        filter.setAuthenticationSuccessHandler(new RedirectAuthenticationSuccessHandler("/"));
+
         http.authorizeRequests()
                 .antMatchers("/", "/home")
                 .permitAll()
