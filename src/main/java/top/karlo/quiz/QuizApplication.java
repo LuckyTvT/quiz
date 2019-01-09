@@ -8,6 +8,10 @@ import top.karlo.quiz.aop.DynamicDataSourceAnnotationAdvisor;
 import top.karlo.quiz.config.DynamicDataSource;
 import top.karlo.quiz.interceptor.DynamicDataSourceAnnotationInterceptor;
 
+
+/**
+ * 图形文字地址：http://patorjk.com/software/taag/#p=display&f=Slant&t=KARLO
+ */
 @SpringBootApplication
 @Import({DynamicDataSource.class})
 public class QuizApplication {

@@ -83,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        UsernamePasswordAuthenticationFilter filter = new CaptchaAuthenticator();
+        UsernamePasswordAuthenticationFilter filter = new MyAuthenticatior();
         filter.setAuthenticationManager(authenticationManager());
         filter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"));
         filter.setAuthenticationSuccessHandler(new RedirectAuthenticationSuccessHandler("/"));
@@ -94,6 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
+                .addFilterAt(filter,MyAuthenticatior.class)
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()

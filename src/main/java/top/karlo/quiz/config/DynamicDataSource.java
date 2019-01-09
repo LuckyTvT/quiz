@@ -120,6 +120,8 @@ public class DynamicDataSource implements ImportBeanDefinitionRegistrar, Environ
         beanDefinitionRegistry.registerBeanDefinition("datasource", define);
         logger.info("注册数据源成功，一共注册{}个数据源", customDataSources.keySet().size() + 1);
 
+
+
     }
 
     /**
