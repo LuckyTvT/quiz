@@ -76,14 +76,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     /**
-     * configure(HttpSecurity)方法定义了哪些URL路径应该被保护，哪些不应该被保护。
+     * configure(HttpSecurity http)方法定义了哪些URL路径应该被保护，哪些不应该被保护。
      * 其中“/”和“/home”路径被配置为不需要任何身份验证。其他所有其他路径都必须经过身份验证。
      * @param http
      * @throws Exception
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        UsernamePasswordAuthenticationFilter filter = new MyAuthenticatior();
+        UsernamePasswordAuthenticationFilter filter = new MyAuthenticatonFilter();
         filter.setAuthenticationManager(authenticationManager());
         filter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"));
         filter.setAuthenticationSuccessHandler(new RedirectAuthenticationSuccessHandler("/"));
@@ -94,7 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .addFilterAt(filter,MyAuthenticatior.class)
+                .addFilterAt(filter,MyAuthenticatonFilter.class)
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
