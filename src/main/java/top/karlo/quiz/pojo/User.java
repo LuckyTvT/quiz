@@ -16,19 +16,15 @@ import java.util.Set;
 public class User implements UserDetails {
     private Integer id;
 
-    private String userUuid;
-
     private String username;
 
     private String password;
 
-    private String userUniqueSalt;
+    private String uniqueSalt;
 
     private String email;
 
     private String telephone;
-
-    private Integer role;
 
     private String image;
 

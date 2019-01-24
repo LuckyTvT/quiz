@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 import top.karlo.quiz.pojo.User;
+import top.karlo.quiz.util.EncryptUtil;
 
 import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
@@ -54,23 +55,11 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
     }
 
     private static boolean checkUserPassword(User user, String formPassword) {
-        final String operatorUniqueSalt = user.getUserUniqueSalt();
+        final String operatorUniqueSalt = user.getUniqueSalt();
         final String plainPassword = formPassword.concat(operatorUniqueSalt);
-        final String cipherText = getCipherText(plainPassword);
+        final String cipherText = EncryptUtil.getCipherText(plainPassword);
         final String password = user.getPassword();
         return Objects.equals(cipherText, password);
     }
 
-    private static String getCipherText(String plainText) {
-        try {
-            MessageDigest sha256Digest = MessageDigest.getInstance("SHA-256");
-            sha256Digest.update(plainText.getBytes(StandardCharsets.UTF_8));
-            byte[] digestByteArray = sha256Digest.digest();
-            final byte[] base64ByteArray = Base64.getEncoder().encode(digestByteArray);
-            return DatatypeConverter.printHexBinary(base64ByteArray);
-        } catch (Exception e) {
-            //ignore
-        }
-        return null;
-    }
 }

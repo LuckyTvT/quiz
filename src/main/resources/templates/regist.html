@@ -8,64 +8,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>注册页</title>
     <link rel="stylesheet" th:href="@{/css/layui.css}">
+    <!--<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
     <link rel="icon" href="../frame/static/image/code.png">
 </head>
 <body>
+<center>
+
 
 <div class="login-main">
-    <header class="layui-elip" style="width: 82%">注册页</header>
+    <br><br>
+        <h2 class="layui-elip"  style="width: 82%;color:green">注&nbsp&nbsp&nbsp&nbsp册</h2>
+    <br><br>
+
 
     <!-- 表单选项 -->
-    <form class="layui-form">
-        <div class="layui-input-inline">
+    <form class="form-horizontal" role="form" action="#" th:action="@{/regist}" th:object="${user}" method="post">
+        <div class="form-group" style="width:300px">
+            <label for="user" class="col-sm-2 control-label">用户名</label>
             <!-- 用户名 -->
-            <div class="layui-inline" style="width: 85%">
-                <input type="text" id="user" name="account" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <div class="col-sm-10" style="width: 85%">
+                <input type="text" id="user" name="username" required  placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
             <!-- 对号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="ri" style="color: green;font-weight: bolder;" hidden></i>
             </div>
             <!-- 错号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="wr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
             </div>
         </div>
         <!-- 密码 -->
-        <div class="layui-input-inline">
-            <div class="layui-inline" style="width: 85%">
-                <input type="password" id="pwd" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        <div class="form-group" style="width:300px">
+            <label for="pwd" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10" style="width: 85%">
+                <input type="password" id="pwd" name="password" required placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
             <!-- 对号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="pri" style="color: green;font-weight: bolder;" hidden></i>
             </div>
             <!-- 错号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="pwr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
             </div>
         </div>
         <!-- 确认密码 -->
-        <div class="layui-input-inline">
-            <div class="layui-inline" style="width: 85%">
-                <input type="password" id="rpwd" name="repassword" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+        <div class="form-group" style="width:300px">
+            <label for="rpwd" class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10" style="width: 85%">
+                <input type="password" id="rpwd" name="repassword" required  placeholder="请确认密码" autocomplete="off" class="layui-input">
             </div>
             <!-- 对号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="rpri" style="color: green;font-weight: bolder;" hidden></i>
             </div>
             <!-- 错号 -->
-            <div class="layui-inline">
+            <div class="col-sm-10">
                 <i class="layui-icon" id="rpwr" style="color: red; font-weight: bolder;" hidden>ဆ</i>
             </div>
         </div>
 
-
-        <div class="layui-input-inline login-btn" style="width: 85%">
-            <button type="submit" lay-submit lay-filter="sub" class="layui-btn">注册</button>
+        <div class="form-group">
+            <div>
+                <button type="submit" class="layui-btn" id="btn">注册</button>
+                <input type="reset" class="layui-btn layui-btn-normal" value="重置"/>
+            </div>
         </div>
+        <!--<div class="layui-input-inline login-btn" style="width: 85%">-->
+            <!--<button type="submit" lay-submit lay-filter="sub" class="layui-btn">注册</button>-->
+        <!--</div>-->
         <hr style="width: 85%" />
-        <p style="width: 85%"><a href="login.html" class="fl">已有账号？立即登录</a><a href="javascript:;" class="fr">忘记密码？</a></p>
+        <p style="width: 85%">已有账号？<a href="login.html" class="fl">立即登录</a></p>
+        <!--<br>-->
+        <!--<p style="width: 85%"> <a href="javascript:;" class="fr">忘记密码？</a> </p>-->
     </form>
 </div>
 
@@ -83,7 +99,7 @@
 
             //alert(user);
             $.ajax({
-                url:'checkUser.php',
+                url:'checkUser',
                 type:'post',
                 dataType:'text',
                 data:{user:user},
@@ -159,5 +175,6 @@
 
     });
 </script>
+</center>
 </body>
 </html>

@@ -3,12 +3,11 @@
 <mapper namespace="top.karlo.quiz.mapper.user.UserMapper" >
   <resultMap id="BaseResultMap" type="top.karlo.quiz.pojo.User" >
     <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="USER_UUID" property="userUuid" jdbcType="VARCHAR" />
     <result column="USERNAME" property="username" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="UNIQUE_SALT" property="uniqueSalt" jdbcType="VARCHAR" />
     <result column="EMAIL" property="email" jdbcType="VARCHAR" />
     <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
-    <result column="ROLE" property="role" jdbcType="INTEGER" />
     <result column="IMAGE" property="image" jdbcType="VARCHAR" />
     <result column="LAST_IP" property="lastIp" jdbcType="VARCHAR" />
     <result column="LAST_TIME" property="lastTime" jdbcType="TIMESTAMP" />
@@ -26,9 +25,9 @@
       ROLE, IMAGE, LAST_IP, 
       LAST_TIME, EXTRA1, EXTRA2, 
       EXTRA3)
-    values (#{id,jdbcType=INTEGER}, #{userUuid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{role,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{lastIp,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER},  #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{uniqueSalt,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{image,jdbcType=VARCHAR}, #{lastIp,jdbcType=VARCHAR},
       #{lastTime,jdbcType=TIMESTAMP}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}, 
       #{extra3,jdbcType=VARCHAR})
   </insert>
@@ -49,19 +48,19 @@
     where ID = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select ID, USER_UUID, USERNAME, PASSWORD, EMAIL, TELEPHONE, ROLE, IMAGE, LAST_IP, 
+    select ID, USERNAME, PASSWORD, UNIQUE_SALT, EMAIL, TELEPHONE, IMAGE, LAST_IP,
     LAST_TIME, EXTRA1, EXTRA2, EXTRA3
     from USER
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select ID, USER_UUID, USERNAME, PASSWORD, EMAIL, TELEPHONE, ROLE, IMAGE, LAST_IP, 
+    select ID, USERNAME, PASSWORD, UNIQUE_SALT, EMAIL, TELEPHONE, IMAGE, LAST_IP,
     LAST_TIME, EXTRA1, EXTRA2, EXTRA3
     from USER
   </select>
 
-  <select id="getUserByUsername" parameterType="java.lang.String" resultMap="top.karlo.quiz.pojo.User" >
-    select ID, USER_UUID, USERNAME, PASSWORD, EMAIL, TELEPHONE, ROLE, IMAGE, LAST_IP,
+  <select id="getUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select ID, USERNAME, PASSWORD, UNIQUE_SALT, EMAIL, TELEPHONE,  IMAGE, LAST_IP,
     LAST_TIME, EXTRA1, EXTRA2, EXTRA3
     from USER where USERNAME = #{value}
   </select>

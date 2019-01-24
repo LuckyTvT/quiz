@@ -88,11 +88,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"));
         filter.setAuthenticationSuccessHandler(new RedirectAuthenticationSuccessHandler("/"));
 
-        http.authorizeRequests()
-                .antMatchers("/", "/home")
-                .permitAll()
+        http
+                .csrf()
+                .ignoringAntMatchers("/home/**")
+                .and()
+                .headers().frameOptions().sameOrigin()
+                .and()
+                .authorizeRequests()
                 .anyRequest()
                 .authenticated()
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/", "/home")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .addFilterAt(filter,MyAuthenticatonFilter.class)
                 .formLogin()
