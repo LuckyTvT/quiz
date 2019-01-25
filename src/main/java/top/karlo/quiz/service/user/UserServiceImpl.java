@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.mapper.user.UserMapper;
 import top.karlo.quiz.pojo.User;
 import top.karlo.quiz.util.EncryptUtil;
@@ -24,9 +25,10 @@ import java.util.UUID;
  * @since 1.0.0
  */
 
-@Service(value = "userService1")
+@Service
 @Slf4j
 @Transactional(rollbackFor = Exception.class)
+@DataSource("quizUser")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -42,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.getUserByUsername(username);
     }
+
 
     @Override
     public void regist(User user) {

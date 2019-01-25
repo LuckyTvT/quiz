@@ -1,5 +1,6 @@
 package top.karlo.quiz.mapper.role;
 
+import org.apache.ibatis.annotations.Mapper;
 import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.pojo.Role;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @date 2019/1/18 14:08
  */
 
-@DataSource("quziUser")
+@Mapper
 public interface RoleMapper {
 
     List<Role> getRoleByUserId(String userId);

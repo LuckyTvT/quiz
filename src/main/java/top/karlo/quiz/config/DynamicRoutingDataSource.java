@@ -2,6 +2,7 @@ package top.karlo.quiz.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  * @author karlo
  * @date 2018/12/31 14:23
  * @since 1.0.0
- */
+*/
 
 public class DynamicRoutingDataSource extends AbstractRoutingDataSource {
 

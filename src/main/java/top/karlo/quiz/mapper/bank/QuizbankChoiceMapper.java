@@ -7,7 +7,6 @@ import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.pojo.QuizbankChoice;
 
 @Mapper
-@DataSource
 public interface QuizbankChoiceMapper {
 
     int deleteByPrimaryKey(Integer id);

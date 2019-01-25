@@ -20,9 +20,9 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="top.karlo.quiz.pojo.User" >
-    insert into USER (ID, USER_UUID, USERNAME, 
-      PASSWORD, EMAIL, TELEPHONE, 
-      ROLE, IMAGE, LAST_IP, 
+    insert into USER (ID, USERNAME,
+      PASSWORD, UNIQUE_SALT, EMAIL, TELEPHONE,
+      IMAGE, LAST_IP,
       LAST_TIME, EXTRA1, EXTRA2, 
       EXTRA3)
     values (#{id,jdbcType=INTEGER},  #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
@@ -33,12 +33,11 @@
   </insert>
   <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.User" >
     update USER
-    set USER_UUID = #{userUuid,jdbcType=VARCHAR},
-      USERNAME = #{username,jdbcType=VARCHAR},
+    set USERNAME = #{username,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
+      UNIQUE_SALT = #{uniqueSalt,jdbcType=VARCHAR},
       EMAIL = #{email,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=VARCHAR},
-      ROLE = #{role,jdbcType=INTEGER},
       IMAGE = #{image,jdbcType=VARCHAR},
       LAST_IP = #{lastIp,jdbcType=VARCHAR},
       LAST_TIME = #{lastTime,jdbcType=TIMESTAMP},

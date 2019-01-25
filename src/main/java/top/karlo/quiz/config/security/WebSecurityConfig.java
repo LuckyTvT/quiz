@@ -1,7 +1,6 @@
 package top.karlo.quiz.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,14 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * 功能描述：
@@ -65,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
                 .roles("USER")
                 .and()
-                .withUser("admin").password(new BCryptPasswordEncoder().encode("admin123"))
+                .withUser("admin").password(new BCryptPasswordEncoder().encode("123admin"))
                 .roles("ADMIN","USER");
 
 //        auth.inMemoryAuthentication()
@@ -117,7 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception{
         //放行静态资源
-        web.ignoring().antMatchers("/css/**", "/fonts/**", "/images/**", "/js/**", "/lib/**", "/captcha/**");
+        web.ignoring().antMatchers("/css/**", "/font/**", "/images/**", "/js/**", "/lib/**");
     }
 
 
