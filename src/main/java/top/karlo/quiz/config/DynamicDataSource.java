@@ -21,6 +21,7 @@ import org.springframework.boot.context.properties.source.ConfigurationPropertyN
 import org.springframework.boot.context.properties.source.ConfigurationPropertySource;
 import org.springframework.boot.context.properties.source.MapConfigurationPropertySource;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
@@ -37,6 +38,7 @@ import java.util.Map;
  * 实现 ImportBeanDefinitionRegistrar 实现数据源注册
  * 实现 EnvironmentAware 用于读取application.yml配置
  */
+
 
 public class DynamicDataSource implements ImportBeanDefinitionRegistrar, EnvironmentAware {
 

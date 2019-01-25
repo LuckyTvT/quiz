@@ -44,23 +44,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void regist(String username, String password, String email, String telephone,
-                       String image, String extra1,String extra2,String extra3) {
+    public void regist(User user) {
         String userUniqueSalt = generateSalt();
-        String plainText = password.concat(userUniqueSalt);
+        String plainText = user.getPassword().concat(userUniqueSalt);
         String cipherText = EncryptUtil.getCipherText(plainText);
-        User user = new User();
-        user.setUsername(username);
-        //password要存储经过salt处理后的密文
         user.setPassword(cipherText);
-        //将每个用户自己的加密salt存储进去
         user.setUniqueSalt(userUniqueSalt);
-        user.setTelephone(telephone);
-        user.setEmail(email);
-        user.setImage(image);
-        user.setExtra1(extra1);
-        user.setExtra2(extra2);
-        user.setExtra3(extra3);
         userMapper.insert(user);
 
     }

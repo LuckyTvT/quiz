@@ -92,8 +92,61 @@
             <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
         </div>
     </div>
+
+    <!--<div class="layui-inline">-->
+        <!--<div>-->
+            <!--<button type="button" style="background-color:#ffaf00;color: white" class="layui-btn layui-btn-radius" th:onclick="'addAuthority()'">-->
+                <!--立即提交-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
 </form>
 
+
+
 </center>
+<script th:inline="javascript">
+    let $;
+
+    layui.use(['table', 'jquery'], function () {
+        $ = layui.jquery;
+    });
+
+    function addAuthority() {
+        $.ajax({
+            url: '/operator/regist',
+            type: 'post',
+            dataType: 'json',
+            data: $("#addForm").serialize(),
+            error: function (XMLHttpRequest) {
+                if (XMLHttpRequest.status === 403) {
+                    layer.alert('权限不足', {
+                        title: '提示信息'
+                    });
+                } else {
+                    layer.alert('网络错误', {
+                        title: '提示信息'
+                    });
+                }
+            },
+            success: function (data) {
+                if (data.success) {
+                    layer.alert('增加权限成功!', {
+                        title: '提示信息',
+                        yes: function () {
+                            let index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            parent.window.location.reload();
+                        }
+                    });
+                } else {
+                    layer.alert('增加权限失败!', {
+                        title: '提示信息'
+                    });
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

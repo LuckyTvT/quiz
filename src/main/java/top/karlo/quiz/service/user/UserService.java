@@ -21,16 +21,8 @@ public interface UserService {
 
     /**
      * 注册
-     * @param username
-     * @param password
-     * @param email
-     * @param telephone
-     * @param image
-     * @param extra1
-     * @param extra2
-     * @param extra3
+     * @param user
      */
-    void regist(String username, String password, String email, String telephone,
-                       String image, String extra1,String extra2,String extra3);
+    void regist(User user);
 
 }
