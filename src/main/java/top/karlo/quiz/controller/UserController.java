@@ -14,12 +14,12 @@ import java.util.List;
 
 /**
  * 功能描述：
- *
+ *      用户相关接口
  * @author Karlo
  * @date 2019/1/18 14:04
  */
 @Controller
-public class OperatorController {
+public class UserController {
 
     @Autowired
     UserService userService;
@@ -29,18 +29,15 @@ public class OperatorController {
         return userService.getAllUser();
     }
 
-    @PostMapping("/regist")
+    /**
+     * 注册
+     * @param user
+     */
+    @PostMapping("/signin")
     public void regist(User user){
-
         userService.regist(user);
     }
 
-
-//    @PostMapping("/regist")
-//    public void regist(User user){
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getPassword());
-//    }
 
 
 }

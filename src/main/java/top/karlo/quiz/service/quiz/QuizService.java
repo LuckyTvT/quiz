@@ -1,4 +1,4 @@
-package top.karlo.quiz.service.type;
+package top.karlo.quiz.service.quiz;
 
 import top.karlo.quiz.pojo.QuizType;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author Karlo
  * @date 2018/12/28 12:39
  */
-public interface TypeService {
+public interface QuizService {
 
     /**
      * 查询全部题目类型数据

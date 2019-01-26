@@ -1,9 +1,10 @@
-package top.karlo.quiz.service.type;
+package top.karlo.quiz.service.quiz;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.mapper.bank.QuizTypeMapper;
 import top.karlo.quiz.pojo.QuizType;
 
@@ -19,7 +20,8 @@ import java.util.List;
 @Service
 @Transactional(rollbackFor = Exception.class)
 @Slf4j
-public class TypeServiceImpl implements TypeService {
+@DataSource
+public class QuizServiceImpl implements QuizService {
 
     @Autowired
     private QuizTypeMapper quizTypeMapper;

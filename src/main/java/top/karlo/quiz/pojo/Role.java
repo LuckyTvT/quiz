@@ -13,8 +13,11 @@ import lombok.Data;
 public class Role {
 
     private String roleId;
-    private String userId;
-    private String desc;
+    private String roleName;
+    private String roleDesc;
+    private String extra1;
+    private String extra2;
+    private String extra3;
 
 
 }

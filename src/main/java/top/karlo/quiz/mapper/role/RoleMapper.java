@@ -1,7 +1,6 @@
 package top.karlo.quiz.mapper.role;
 
 import org.apache.ibatis.annotations.Mapper;
-import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.pojo.Role;
 
 import java.util.List;
