@@ -1,6 +1,9 @@
 package top.karlo.quiz.service.quiz;
 
 import top.karlo.quiz.pojo.QuizType;
+import top.karlo.quiz.pojo.QuizbankBlank;
+import top.karlo.quiz.pojo.QuizbankChoice;
+import top.karlo.quiz.pojo.QuizbankQuestion;
 
 import java.util.List;
 
@@ -17,5 +20,19 @@ public interface QuizService {
      */
     List<QuizType> getAllType();
 
+    /**
+     * 录入填空题
+     */
+    boolean enteringBlank(QuizbankBlank blank);
+
+    /**
+     * 录入选择题
+     */
+    boolean enteringChoice(QuizbankChoice choice);
+
+    /**
+     * 录入简答题
+     */
+    boolean enteringShortAns(QuizbankQuestion shortAns);
 
 }

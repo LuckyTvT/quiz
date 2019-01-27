@@ -1,16 +1,14 @@
 package top.karlo.quiz.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import top.karlo.quiz.pojo.User;
 import top.karlo.quiz.service.user.UserService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 功能描述：
@@ -34,8 +32,27 @@ public class UserController {
      * @param user
      */
     @PostMapping("/signin")
-    public void regist(User user){
+    public String regist(User user){
+        if(user == null){
+            return "regist";
+        }
         userService.regist(user);
+        return "test";
+
+    }
+
+    /**
+     * 校验用户名是否已存在
+     * @param username
+     * @return
+     */
+    @PostMapping("/signcheck")
+    @ResponseBody
+    public Map check(String username){
+        boolean isExist = userService.checkUserhasExist(username);
+        HashMap<String, Object> resutlMap = new HashMap<>();
+        resutlMap.put("isExist",isExist);
+        return resutlMap;
     }
 
 

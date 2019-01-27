@@ -112,7 +112,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //不需要授权即可查看的页面
                 .authorizeRequests()
-                .antMatchers("/regist")
+                .antMatchers("/regist","/signin")
                 .permitAll()
                 .and()
                 .headers().frameOptions().sameOrigin()
@@ -140,7 +140,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception{
         //放行静态资源
-        web.ignoring().antMatchers("/css/**", "/font/**", "/images/**", "/js/**", "/lib/**");
+        web.ignoring().antMatchers("/css/**", "/font/**", "/images/**", "/js/**", "/lib/**","/img/**");
     }
 
 

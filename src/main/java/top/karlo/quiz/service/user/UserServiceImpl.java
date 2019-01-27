@@ -57,6 +57,12 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public boolean checkUserhasExist(String username) {
+        User user = userMapper.getUserByUsername(username);
+        return user == null ? false : true;
+    }
+
 
     private String generateSalt(){
         //使用随机的uuid作为salt
