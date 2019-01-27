@@ -3,9 +3,12 @@
 <mapper namespace="top.karlo.quiz.mapper.role.RoleMapper" >
 
     <resultMap id="roleResultMap" type="top.karlo.quiz.pojo.Role" >
-        <result column="USER_ID" property="userId" jdbcType="INTEGER" />
         <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
-        <result column="DESC" property="desc" jdbcType="VARCHAR" />
+        <result column="ROLE_NAME" property="roleName" jdbcType="INTEGER" />
+        <result column="ROLE_DESC" property="roleDesc" jdbcType="VARCHAR" />
+        <result column="EXTRA1" property="extra1" jdbcType="VARCHAR" />
+        <result column="EXTRA2" property="extra2" jdbcType="VARCHAR" />
+        <result column="EXTRA3" property="extra3" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="getRoleByUserId" parameterType="java.lang.String" resultMap="roleResultMap">

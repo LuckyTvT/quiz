@@ -74,6 +74,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * 其中“/”和“/home”路径被配置为不需要任何身份验证。其他所有其他路径都必须经过身份验证。
      * @param http
      * @throws Exception
+     *
+     * http
+     *         // 开始请求权限配置
+     *         .authorizeRequests()
+     *         // 我们指定任何用户都可以访问多个URL的模式。
+     *         // 任何用户都可以访问以"/resources/","/signup", 或者 "/about"开头的URL。
+     * //      .antMatchers("/global/**","/static/**").permitAll()
+     *         // 请求匹配 /admin/** 只拥有 ROLE_ADMIN 角色的用户可以访问
+     *         .antMatchers("/admin/**").hasRole("ADMIN")
+     *         // 请求匹配 /user/** 拥有 ROLE_ADMIN 和 ROLE_USER 的角色用户都可以访问
+     *         .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+     *         // 任何以"/db/" 开头的URL需要同时具有 "ROLE_ADMIN" 和 "ROLE_DBA"权限的用户才可以访问。
+     *         // 和上面一样我们的 hasRole 方法也没有使用 "ROLE_" 前缀。
+     *         // .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+     *         // 其余所有的请求都需要认证后才可以访问
+     *         .anyRequest().authenticated().and().formLogin()
+     *         // 登陆界面；默认登陆成功后的界面(不起作用)；默认登陆失败的界面;表单提交地址
+     *         .loginPage("/login").defaultSuccessUrl("/index.html").failureUrl("/login?error=true")
+     *         // 默认用户名键值，默认密码键值
+     *         .usernameParameter("username").passwordParameter("password").permitAll().and().rememberMe()
+     *         .tokenValiditySeconds(1209600).key("rememberme");
+     * //        .and()
+     * //        .logout().logoutUrl("").logoutSuccessUrl("/index.html").permitAll();
+     *
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -86,6 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .ignoringAntMatchers("/home/**")
                 .and()
+                //不需要授权即可查看的页面
                 .authorizeRequests()
                 .antMatchers("/regist")
                 .permitAll()

@@ -38,7 +38,7 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
             url = savedRequest.getRedirectUrl();
         }
         if(url == null){
-            getRedirectStrategy().sendRedirect(request,response,"/hello.html");
+            getRedirectStrategy().sendRedirect(request,response,"/main.html");
         }
         super.onAuthenticationSuccess(request, response, authentication);
     }
