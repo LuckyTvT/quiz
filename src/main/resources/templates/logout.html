@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <!--<base id="base" href="${base}">-->
+    <meta charset="UTF-8">
+    <title>注销</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/demo.css}" />
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/component.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/layui.css}" />
+    <script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layui.js}"></script>
+</head>
+<body>
+<div class="container demo-1">
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <div class="logo_box">
+                <h2>您已安全退出!</h2>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /container -->
+<script th:src="@{/js/TweenLite.min.js}"></script>
+<script th:src="@{/js/EasePack.min.js}"></script>
+<script th:src="@{/js/rAF.js}"></script>
+<script th:src="@{/js/demo-1.js}"></script>
+</body>
+</html>

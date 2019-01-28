@@ -1,6 +1,5 @@
 package top.karlo.quiz.service.user;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +9,6 @@ import top.karlo.quiz.mapper.user.UserMapper;
 import top.karlo.quiz.pojo.User;
 import top.karlo.quiz.util.EncryptUtil;
 
-import javax.xml.bind.DatatypeConverter;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
