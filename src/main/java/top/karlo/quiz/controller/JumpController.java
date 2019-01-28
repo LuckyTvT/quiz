@@ -14,20 +14,28 @@ public class JumpController {
 
     @RequestMapping("/blank")
     public String jumpToBlank(){
-        System.out.println("blank");
         return "quiz/blank";
     }
 
     @RequestMapping("/choice")
     public String jumpToChoice(){
-        System.out.println("choice");
         return "quiz/choice.html";
     }
 
     @RequestMapping("/shortAns")
     public String jumpToShortAns(){
-        System.out.println("shortAns");
         return "quiz/shortAns.html";
     }
+
+    @RequestMapping("/userAuthorize")
+    public String jumpToUserAuthorize(){
+        return "user/userAuthorize.html";
+    }
+
+    @RequestMapping("/userManage")
+    public String jumpToUserManage(){
+        return "user/userManage.html";
+    }
+
 }
 
