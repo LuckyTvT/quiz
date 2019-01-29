@@ -1,5 +1,6 @@
 package top.karlo.quiz.config.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -17,16 +18,25 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  * 功能描述：
  *      security参见：https://www.jianshu.com/p/76bfa6743ba9
  *              https://blog.csdn.net/qq_35508033/article/details/79046441
+ *
+ * configure(WebSecurity) 通过重载，配置Spring Security的Filter链
+ * configure(HttpSecurity) 通过重载，配置如何通过拦截器保护请求
+ * configure(AuthenticationManagerBuilder) 通过重载，配置user-detail服务
+ *
+ *
+ *
  * @author Karlo
  * @date 2019/1/2 16:50
  */
 @Configuration
 @EnableWebSecurity
+@Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationProvider authenticationProvider;
-
+    @Autowired
+    private UserDetailService userDetailService;
 
 //    private final UserDetailsService userDetailsService;
 
@@ -55,14 +65,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
-                .roles("USER")
-                .and()
-                .withUser("admin").password(new BCryptPasswordEncoder().encode("123admin"))
-                .roles("ADMIN","USER");
 
+        log.info("用户认证...");
+        auth.userDetailsService(userDetailService);
+//        auth.authenticationProvider()
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(new BCryptPasswordEncoder())
+//                .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
+//                .roles("USER")
+//                .and()
+//                .withUser("admin").password(new BCryptPasswordEncoder().encode("123admin"))
+//                .roles("ADMIN","USER");
+//        auth
+//                .jdbcAuthentication()
+//                .dataSource(dataSource);
 //        auth.inMemoryAuthentication()
 //                .withUser("admin").password("admin123").roles("ADMIN","USER")
 //                .and()
@@ -98,6 +114,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      *         .tokenValiditySeconds(1209600).key("rememberme");
      * //        .and()
      * //        .logout().logoutUrl("").logoutSuccessUrl("/index.html").permitAll();
+     *
+     *          http.authorizeRequests()
+ *                 .antMatchers("/","/css/**","/js/**").permitAll()   //任何人都可以访问
+ *                 .antMatchers("/admin/**").access("hasRole('ADMIN')")     //持有user权限的用户可以访问
+ *                 .antMatchers("/user/**").hasAuthority("ROLE_USER");
      *
      */
     @Override

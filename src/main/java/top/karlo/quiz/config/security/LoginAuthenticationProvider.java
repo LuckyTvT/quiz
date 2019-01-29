@@ -43,6 +43,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("用户不存在");
         }
         if (!checkUserPassword(user, password)) {
+            log.info("password ");
             throw new BadCredentialsException("密码错误");
         }
         Collection<? extends GrantedAuthority> collection = user.getAuthorities();
@@ -59,7 +60,9 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         final String plainPassword = formPassword.concat(operatorUniqueSalt);
         final String cipherText = EncryptUtil.getCipherText(plainPassword);
         final String password = user.getPassword();
-        return Objects.equals(cipherText, password);
+        boolean userPassResult = Objects.equals(cipherText, password);
+        log.info("userPassWord check result:{}",userPassResult);
+        return userPassResult;
     }
 
 }
