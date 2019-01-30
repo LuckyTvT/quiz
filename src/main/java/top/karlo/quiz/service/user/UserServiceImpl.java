@@ -22,7 +22,7 @@ import java.util.UUID;
 
 @Service
 @Slf4j
-@Transactional(rollbackFor = Exception.class)
+//@Transactional(rollbackFor = Exception.class)
 @DataSource("quizUser")
 public class UserServiceImpl implements UserService {
 

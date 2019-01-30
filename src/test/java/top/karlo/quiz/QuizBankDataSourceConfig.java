@@ -1,4 +1,4 @@
-package top.karlo.quiz.config;
+package top.karlo.quiz;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
@@ -27,6 +27,8 @@ import javax.sql.DataSource;
 //@Configuration
 //@MapperScan(basePackages = {"top.karlo.mapper.bank"},sqlSessionTemplateRef = "quizBankSqlSessionTemplate")
 public class QuizBankDataSourceConfig {
+
+
 
     /**
      * 必须加此注解，不然报错，下一个类则不需要添加

@@ -1,4 +1,4 @@
-package top.karlo.quiz.config;
+package top.karlo.quiz;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;

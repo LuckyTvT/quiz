@@ -20,8 +20,6 @@ import java.util.List;
 public class BaseController {
 
 
-    @Autowired
-    UserService userService;
 
 
 

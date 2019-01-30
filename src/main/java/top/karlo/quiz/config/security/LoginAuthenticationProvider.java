@@ -43,7 +43,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("用户不存在");
         }
         if (!checkUserPassword(user, password)) {
-            log.info("password ");
+            log.info("password {}",password);
             throw new BadCredentialsException("密码错误");
         }
         Collection<? extends GrantedAuthority> collection = user.getAuthorities();

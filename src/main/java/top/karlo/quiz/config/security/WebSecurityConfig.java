@@ -63,27 +63,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * @param auth
      * @throws Exception
      */
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception{
-
-        log.info("用户认证...");
-        auth.userDetailsService(userDetailService);
-//        auth.authenticationProvider()
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(new BCryptPasswordEncoder())
-//                .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
-//                .roles("USER")
-//                .and()
-//                .withUser("admin").password(new BCryptPasswordEncoder().encode("123admin"))
-//                .roles("ADMIN","USER");
-//        auth
-//                .jdbcAuthentication()
-//                .dataSource(dataSource);
-//        auth.inMemoryAuthentication()
-//                .withUser("admin").password("admin123").roles("ADMIN","USER")
-//                .and()
-//                .withUser("user").password("user").roles("USER");
-    }
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception{
+//
+//        log.info("用户认证...");
+//        auth.userDetailsService(userDetailService);
+////        auth.authenticationProvider()
+////        auth.inMemoryAuthentication()
+////                .passwordEncoder(new BCryptPasswordEncoder())
+////                .withUser("user").password(new BCryptPasswordEncoder().encode("user"))
+////                .roles("USER")
+////                .and()
+////                .withUser("admin").password(new BCryptPasswordEncoder().encode("123admin"))
+////                .roles("ADMIN","USER");
+////        auth
+////                .jdbcAuthentication()
+////                .dataSource(dataSource);
+////        auth.inMemoryAuthentication()
+////                .withUser("admin").password("admin123").roles("ADMIN","USER")
+////                .and()
+////                .withUser("user").password("user").roles("USER");
+//    }
 
 
     /**
@@ -161,6 +161,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider);
+    }
 
     @Override
     public void configure(WebSecurity web) throws Exception{
