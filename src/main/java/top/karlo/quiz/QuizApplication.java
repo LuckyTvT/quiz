@@ -22,22 +22,15 @@ import top.karlo.quiz.interceptor.DynamicDataSourceAnnotationInterceptor;
 
 @SpringBootApplication
 @Import({DynamicDataSource.class})
-public class QuizApplication implements ApplicationContextAware {
+public class QuizApplication {
     @Bean
     public DynamicDataSourceAnnotationAdvisor dynamicDatasourceAnnotationAdvisor() {
         return new DynamicDataSourceAnnotationAdvisor(new DynamicDataSourceAnnotationInterceptor());
     }
 
-    private ApplicationContext applicationContext;
-
     public static void main(String[] args) {
         SpringApplication.run(QuizApplication.class, args);
-
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 }
 

@@ -89,12 +89,17 @@
 /*///*/
 .mb2{
 	padding: 25px;
-	margin-left: 35px;
-	margin-bottom: 40px
+	margin-left: 40px;
+	margin-bottom: 40px;
 }
 .mb3{
-	padding: 25px;
+	padding: 50px;
+	margin-left: 60px;
+}
+.mb4{
+	padding: 10px;
 	margin-left: 40px;
+	text-align:center;
 }
 .mb2 a{
 	text-decoration: none;
