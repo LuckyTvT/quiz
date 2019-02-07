@@ -18,39 +18,41 @@
 <body>
 <br>
 <form class="layui-form" th:action="@{/enteringChoice}" method="post">
-
+    <div style="display:none">
+        <input name="type" value="2"/>
+    </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">题目</label>
         <div class="layui-input-block">
-            <textarea name="A" placeholder="请输入题目内容" class="layui-textarea"></textarea>
+            <textarea name="question" placeholder="请输入题目内容" class="layui-textarea"></textarea>
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">A</label>
         <div class="layui-input-block">
-            <input name="A" class="layui-input" style="" />
+            <input name="a" class="layui-input" style="" />
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">B</label>
         <div class="layui-input-block">
-            <input name="B" class="layui-input" style="" />
+            <input name="b" class="layui-input" style="" />
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">C</label>
         <div class="layui-input-block">
-            <input name="C" class="layui-input" />
+            <input name="c" class="layui-input" />
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">D</label>
         <div class="layui-input-block">
-            <input name="D" class="layui-input" />
+            <input name="d" class="layui-input" />
         </div>
     </div>
 

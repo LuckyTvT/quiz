@@ -21,11 +21,11 @@
   <insert id="insert" parameterType="top.karlo.quiz.pojo.QuizbankChoice" >
     insert into QUIZBANK_CHOICE (ID, TYPE, QUESTION, 
       A, B, C, D, 
-      ANSWER, EXTRA1, EXTRA2, 
+      ANSWER,IN_TIME, EXTRA1, EXTRA2,
       EXTRA3)
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, 
       #{a,jdbcType=VARCHAR}, #{b,jdbcType=VARCHAR}, #{c,jdbcType=VARCHAR}, #{d,jdbcType=VARCHAR}, 
-      #{answer,jdbcType=CHAR}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=CHAR}, #{inTime,jdbcType=TIMESTAMP}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR},
       #{extra3,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="top.karlo.quiz.pojo.QuizbankChoice" >

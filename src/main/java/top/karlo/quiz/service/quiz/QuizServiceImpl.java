@@ -14,6 +14,7 @@ import top.karlo.quiz.pojo.QuizbankBlank;
 import top.karlo.quiz.pojo.QuizbankChoice;
 import top.karlo.quiz.pojo.QuizbankQuestion;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,18 +46,21 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public boolean enteringBlank(QuizbankBlank blank) {
+        blank.setInTime(new Date());
         int insertLine = blankMapper.insert(blank);
         return insertLine == 1 ? true : false;
     }
 
     @Override
     public boolean enteringChoice(QuizbankChoice choice) {
+        choice.setInTime(new Date());
         int insertLine = choiceMapper.insert(choice);
         return insertLine == 1 ? true : false;
     }
 
     @Override
     public boolean enteringShortAns(QuizbankQuestion shortAns) {
+        shortAns.setInTime(new Date());
         int insertLine = shortAnsMapper.insert(shortAns);
         return insertLine == 1 ? true : false;
     }

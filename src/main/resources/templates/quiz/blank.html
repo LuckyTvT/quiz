@@ -13,16 +13,19 @@
 <body>
     <form class="layui-form" th:action="@{/enteringBlank}" method="post">
         <br>
+        <div style="display:none">
+            <input name="type" value="1"/>
+        </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">题目</label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入题目内容" class="layui-textarea"></textarea>
+                <textarea name="question" placeholder="请输入题目内容" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">答案</label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入对应空位的答案以逗号隔开" class="layui-textarea"></textarea>
+                <textarea name="answer" placeholder="请输入对应空位的答案以逗号隔开" class="layui-textarea"></textarea>
             </div>
         </div>
 

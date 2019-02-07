@@ -2,6 +2,8 @@ package top.karlo.quiz.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class QuizbankChoice {
     private Integer id;
@@ -19,6 +21,8 @@ public class QuizbankChoice {
     private String d;
 
     private String answer;
+
+    private Date inTime;
 
     private String extra1;
 
