@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import top.karlo.quiz.annotation.DataSource;
 import top.karlo.quiz.mapper.bank.QuizTypeMapper;
 import top.karlo.quiz.mapper.bank.QuizbankBlankMapper;
@@ -46,6 +47,13 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public boolean enteringBlank(QuizbankBlank blank) {
+        //判空
+        boolean isAnsEmpty = StringUtils.isEmpty(blank.getAnswer());
+        boolean isQuesEmpty = StringUtils.isEmpty(blank.getQuestion());
+        boolean isTypeEmpty = StringUtils.isEmpty(blank.getType());
+        if(isAnsEmpty || isQuesEmpty || isTypeEmpty){
+            return false;
+        }
         blank.setInTime(new Date());
         int insertLine = blankMapper.insert(blank);
         return insertLine == 1 ? true : false;
@@ -53,6 +61,18 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public boolean enteringChoice(QuizbankChoice choice) {
+        //判空
+        boolean isAnsEmpty = StringUtils.isEmpty(choice.getAnswer());
+        boolean isQuesEmpty = StringUtils.isEmpty(choice.getQuestion());
+        boolean isAEmpty = StringUtils.isEmpty(choice.getA());
+        boolean isBEmpty = StringUtils.isEmpty(choice.getB());
+        boolean isCEmpty = StringUtils.isEmpty(choice.getC());
+        boolean isDEmpty = StringUtils.isEmpty(choice.getD());
+        boolean isTypeEmpty = StringUtils.isEmpty(choice.getType());
+        if(isAnsEmpty || isQuesEmpty ||isTypeEmpty || isAEmpty ||
+                isBEmpty || isCEmpty || isDEmpty){
+            return false;
+        }
         choice.setInTime(new Date());
         int insertLine = choiceMapper.insert(choice);
         return insertLine == 1 ? true : false;
@@ -60,6 +80,13 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public boolean enteringShortAns(QuizbankQuestion shortAns) {
+        //判空
+        boolean isAnsEmpty = StringUtils.isEmpty(shortAns.getAnswer());
+        boolean isQuesEmpty = StringUtils.isEmpty(shortAns.getQuestion());
+        boolean isTypeEmpty = StringUtils.isEmpty(shortAns.getType());
+        if(isAnsEmpty || isQuesEmpty ||isTypeEmpty){
+            return false;
+        }
         shortAns.setInTime(new Date());
         int insertLine = shortAnsMapper.insert(shortAns);
         return insertLine == 1 ? true : false;

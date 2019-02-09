@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     quizbank:
-      url: jdbc:mysql://47.92.132.41:3306/quizData?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://47.92.132.41:3306/quizData?useUnicode=true&characterEncoding=utf8&serverTimezone=CTT
       username: guest
       password: guest
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,7 +10,7 @@ spring:
 
     quizuser:
     - key: quizUser
-      url: jdbc:mysql://47.92.207.243:3306/quizUser?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://47.92.207.243:3306/quizUser?useUnicode=true&characterEncoding=utf8&serverTimezone=CTT
       username: guest
       password: guest
       driver-class-name: com.mysql.cj.jdbc.Driver

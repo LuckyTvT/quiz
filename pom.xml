@@ -10,7 +10,7 @@
     </parent>
     <groupId>top.karlo</groupId>
     <artifactId>quiz</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>quiz</name>
     <description>quizBankDemo</description>
 
@@ -33,6 +33,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
@@ -75,7 +81,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,14 +109,14 @@
 
     <build>
         <!--莫名其妙编译出问题，加上了这个配置或者在 project structure 下 module 删除path 下 输出文件路径后缀的classes-->
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/java</directory>-->
+                <!--<includes>-->
+                    <!--<include>**/*.xml</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
