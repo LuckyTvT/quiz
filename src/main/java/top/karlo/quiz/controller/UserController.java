@@ -37,7 +37,7 @@ public class UserController {
             return "regist";
         }
         userService.regist(user);
-        return "test";
+        return "main";
 
     }
 

@@ -10,6 +10,7 @@ import top.karlo.quiz.pojo.User;
 import top.karlo.quiz.util.EncryptUtil;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -56,6 +57,11 @@ public class UserServiceImpl implements UserService {
     public boolean checkUserhasExist(String username) {
         User user = userMapper.getUserByUsername(username);
         return user == null ? false : true;
+    }
+
+    @Override
+    public void updateUserInfo(Map<String, Object> map) {
+        userMapper.updateUserInfo(map);
     }
 
 

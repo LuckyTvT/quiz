@@ -58,11 +58,16 @@
     from USER
   </select>
 
-
-
   <select id="getUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
     select ID, USERNAME, PASSWORD, UNIQUE_SALT, EMAIL, TELEPHONE,  IMAGE, LAST_IP,
     LAST_TIME, EXTRA1, EXTRA2, EXTRA3
     from USER where USERNAME = #{value}
   </select>
+
+  <update id="updateUserInfo" parameterType="java.util.Map" >
+    update USER set LAST_IP = #{ip} , LAST_TIME = #{lastTime} where USERNAME = #{username}
+  </update>
+
+
+
 </mapper>
