@@ -163,12 +163,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider);
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception{
+    public void configure(WebSecurity web){
         //放行静态资源
         web.ignoring().antMatchers("/css/**", "/font/**", "/images/**", "/js/**", "/lib/**","/img/**");
     }

@@ -1,13 +1,5 @@
 package top.karlo.quiz.config;
 
-/**
- * 功能描述:
- *
- * @author karlo
- * @date 2018/12/31 13:25
- * @since 1.0.0
- */
-
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +13,6 @@ import org.springframework.boot.context.properties.source.ConfigurationPropertyN
 import org.springframework.boot.context.properties.source.ConfigurationPropertySource;
 import org.springframework.boot.context.properties.source.MapConfigurationPropertySource;
 import org.springframework.context.EnvironmentAware;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotationMetadata;
@@ -34,11 +24,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 动态数据源注册
- * 实现 ImportBeanDefinitionRegistrar 实现数据源注册
- * 实现 EnvironmentAware 用于读取application.yml配置
+ * 功能描述:
+ *      动态数据源注册
+ *      实现 ImportBeanDefinitionRegistrar 实现数据源注册
+ *      实现 EnvironmentAware 用于读取application.yml配置
+ * @author karlo
+ * @date 2018/12/31 13:25
+ * @since 1.0.0
  */
-
 
 public class DynamicDataSource implements ImportBeanDefinitionRegistrar, EnvironmentAware {
 
@@ -66,7 +59,7 @@ public class DynamicDataSource implements ImportBeanDefinitionRegistrar, Environ
     /**
      * 存储我们注册的数据源
      */
-    private Map<String, DataSource> customDataSources = new HashMap<String, DataSource>();
+    private Map<String, DataSource> customDataSources = new HashMap<>();
 
     /**
      * 参数绑定工具 springboot2.0新推出
@@ -82,14 +75,15 @@ public class DynamicDataSource implements ImportBeanDefinitionRegistrar, Environ
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         // 获取所有数据源配置
-        Map config, defauleDataSourceProperties;
-        defauleDataSourceProperties = binder.bind("spring.datasource.quizbank", Map.class).get();
+        Map config;
+        Map defaulfDataSourceProperties = binder.bind("spring.datasource.quizbank", Map.class).get();
         // 获取数据源类型
         String typeStr = evn.getProperty("spring.datasource.type");
         // 获取数据源类型
         Class<? extends DataSource> clazz = getDataSourceType(typeStr);
         // 绑定默认数据源参数 也就是主数据源
-        DataSource consumerDatasource, defaultDatasource = bind(clazz, defauleDataSourceProperties);
+        DataSource consumerDatasource;
+        DataSource defaultDatasource = bind(clazz, defaulfDataSourceProperties);
         DynamicDataSourceContextHolder.dataSourceIds.add("quizBank");
         logger.info("注册默认数据源成功");
         // 获取其他数据源配置
@@ -98,9 +92,9 @@ public class DynamicDataSource implements ImportBeanDefinitionRegistrar, Environ
         for (int i = 0; i < configs.size(); i++) {
             config = configs.get(i);
             clazz = getDataSourceType((String) config.get("type"));
-            defauleDataSourceProperties = config;
+            defaulfDataSourceProperties = config;
             // 绑定参数
-            consumerDatasource = bind(clazz, defauleDataSourceProperties);
+            consumerDatasource = bind(clazz, defaulfDataSourceProperties);
             // 获取数据源的key，以便通过该key可以定位到数据源
             String key = config.get("key").toString();
             customDataSources.put(key, consumerDatasource);
