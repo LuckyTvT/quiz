@@ -3,6 +3,7 @@ package top.karlo.quiz.service.user;
 import top.karlo.quiz.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -31,4 +32,6 @@ public interface UserService {
      * @return
      */
     boolean checkUserhasExist(String username);
+
+    void updateUserInfo(Map<String, Object> map);
 }
