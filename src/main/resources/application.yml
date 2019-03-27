@@ -23,7 +23,14 @@ server:
 
 logging:
   level:
+    root: debug
     top:
       karlo:
         quiz:
           repository: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
